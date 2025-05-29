@@ -1,5 +1,5 @@
 import express  from "express"
-import {register,login, getAllUser,getUserbyId, block, adminCreateUser, editUser, deleteUserById } from "./authContoller.js"
+import {register,login, getAllUser,getUserbyId, block, adminCreateUser, editUser, deleteUserById, healthCheck } from "./authContoller.js"
 import validateUser from "../../middleware/validateUser.js"
 import {isAdmin, requireSignin} from "../../middleware/authMiddleware.js"
 
@@ -13,4 +13,5 @@ router.post('/adminCreateUser', requireSignin, adminCreateUser);
 router.post('/block', requireSignin,isAdmin, block);
 router.post('/editUser', requireSignin,isAdmin, editUser);
 router.post("/deleteuserbyid", deleteUserById);
+router.get("/health", healthCheck);
 export default router

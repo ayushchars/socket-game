@@ -223,3 +223,13 @@ export const deleteUserById = async (req, res) => {
     return ErrorResponse(res, "Internal Server Error");
   }
 };
+export const healthCheck = async (req, res) => {
+  try {
+    return successResponseWithData(res, "Server is running", {
+      status: "OK",
+    });
+  } catch (error) {
+    console.error("Health check error:", error);
+    return ErrorResponse(res, "Health check failed");
+  }
+};
